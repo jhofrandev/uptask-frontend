@@ -7,6 +7,7 @@ import {
   useParams,
 } from "react-router-dom";
 import AddTaskModal from "@/components/tasks/AddTaskModal";
+import TaskList from "@/components/tasks/TaskList";
 
 export default function ProjectDetailsView() {
   const navigate = useNavigate();
@@ -22,7 +23,6 @@ export default function ProjectDetailsView() {
 
   if (isLoading) return "Cargando...";
   if (isError) return <Navigate to="/404" />;
-
   if (data)
     return (
       <>
@@ -39,7 +39,7 @@ export default function ProjectDetailsView() {
             Agregar Tarea
           </button>
         </nav>
-
+        <TaskList tasks={data.tasks} />
         <AddTaskModal />
       </>
     );
