@@ -9,6 +9,7 @@ import {
 import AddTaskModal from "@/components/tasks/AddTaskModal";
 import TaskList from "@/components/tasks/TaskList";
 import EditTaskData from "@/components/tasks/EditTaskData";
+import TaskModalDetails from "@/components/tasks/TaskModalDetails";
 
 export default function ProjectDetailsView() {
   const navigate = useNavigate();
@@ -41,6 +42,7 @@ export default function ProjectDetailsView() {
           </button>
         </nav>
         <TaskList tasks={data.tasks} />
+        <TaskModalDetails />
         <AddTaskModal />
         <EditTaskData />
       </>

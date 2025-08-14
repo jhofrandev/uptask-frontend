@@ -27,10 +27,10 @@ export default function TaskCard({ task }: TaskCardProps) {
   const { mutate } = useMutation({
     mutationFn: deleteTask,
     onError: (error) => {
-      toast.error(error.message);
+      toast.error(error.message, { toastId: "errorDeleteTask" });
     },
     onSuccess: (data) => {
-      toast.success(data);
+      toast.success(data, { toastId: "deleteTask" });
       queryClient.invalidateQueries({ queryKey: ["project", projectId] });
     },
   });
@@ -67,6 +67,9 @@ export default function TaskCard({ task }: TaskCardProps) {
                 <button
                   type="button"
                   className="block px-3 py-1 text-sm leading-6 text-gray-900"
+                  onClick={() =>
+                    navigate(location.pathname + `?viewTask=${task._id}`)
+                  }
                 >
                   Ver Tarea
                 </button>

@@ -44,8 +44,8 @@ export default function EditTaskModal({ data, taskId }: EditTaskModalProps) {
       toast.error(error.message);
     },
     onSuccess: (data) => {
-      queryClient.invalidateQueries({ queryKey: ["editProject", projectId] });
       toast.success(data);
+      queryClient.invalidateQueries({ queryKey: ["editProject", projectId] });
       reset();
       navigate(location.pathname, { replace: true });
     },
