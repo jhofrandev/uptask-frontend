@@ -1,11 +1,6 @@
 import api from "@/lib/axios";
 import { isAxiosError } from "axios";
-import {
-  dashboardSchema,
-  porjectSchema,
-  type Project,
-  type ProjectFormData,
-} from "../types";
+import { dashboardSchema, type Project, type ProjectFormData } from "../types";
 
 export async function createProject(formData: ProjectFormData) {
   try {
