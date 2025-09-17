@@ -5,7 +5,7 @@ import { useMutation } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
-type NewPasswordFormProps = {
+type NewPasswordTokenProps = {
   token: ConfirmToken["token"];
   setToken: React.Dispatch<React.SetStateAction<string>>;
   setIsValidToken: React.Dispatch<React.SetStateAction<boolean>>;
@@ -15,7 +15,7 @@ export default function NewPasswordToken({
   token,
   setToken,
   setIsValidToken,
-}: NewPasswordFormProps) {
+}: NewPasswordTokenProps) {
   const { mutate } = useMutation({
     mutationFn: validateToken,
     onError: (error) => {
