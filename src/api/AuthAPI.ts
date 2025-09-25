@@ -40,7 +40,6 @@ export async function requestConfirmationCode(
   try {
     const url = "/auth/request-code";
     const { data } = await api.post<string>(url, formData);
-    localStorage.setItem("AUTH_TOKEN", data);
     return data;
   } catch (error) {
     if (isAxiosError(error) && error.response) {
@@ -53,6 +52,7 @@ export async function authenticateUser(formData: UserLoginForm) {
   try {
     const url = "/auth/login";
     const { data } = await api.post<string>(url, formData);
+    localStorage.setItem("AUTH_TOKEN", data);
     return data;
   } catch (error) {
     if (isAxiosError(error) && error.response) {
