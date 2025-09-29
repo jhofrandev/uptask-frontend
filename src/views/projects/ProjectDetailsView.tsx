@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { getProjectById } from "@/api/ProjectAPI";
 import {
+  Link,
   Navigate,
   useLocation,
   useNavigate,
@@ -40,6 +41,12 @@ export default function ProjectDetailsView() {
           >
             Agregar Tarea
           </button>
+          <Link
+            to={"team"}
+            className="bg-fuchsia-400 hover:bg-fuchsia-500 px-10 py-3 text-white text-xl font-bold cursor-pointer transition-colors"
+          >
+            Colaboradores
+          </Link>
         </nav>
         <TaskList tasks={data.tasks} />
         <TaskModalDetails />
