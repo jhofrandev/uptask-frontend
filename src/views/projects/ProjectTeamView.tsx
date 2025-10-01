@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { EllipsisVerticalIcon } from "@heroicons/react/20/solid";
 import { useNavigate, Link, useParams, Navigate } from "react-router-dom";
 import {
@@ -26,13 +26,16 @@ export default function ProjectTeamView() {
     retry: false,
   });
 
+  const queryClient = useQueryClient();
+
   const { mutate } = useMutation({
     mutationFn: removeUserFromProject,
     onError: (error) => {
       toast.error(error.message);
     },
     onSuccess: (data) => {
-      toast.success(data);
+      toast.success(data, { toastId: "removeUserFromProject" });
+      queryClient.invalidateQueries({ queryKey: ["projectTeam", projectId] });
     },
   });
 
